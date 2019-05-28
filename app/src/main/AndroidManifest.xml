@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SearchFragment"></activity>
+        <activity android:name=".AddNewShowActivity"></activity>
+        <activity android:name=".AddNewGenreActivity" />
+        <activity android:name=".AddNewAlbumActivity" />
+        <activity android:name=".SearchFragment" />
         <activity android:name=".UpdateActivity" />
         <activity android:name=".AdminPanel" />
         <activity android:name=".RegisterActivity" />

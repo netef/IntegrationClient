@@ -1,71 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    tools:context=".RegisterActivity"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-
     android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context=".AddNewShowActivity"
     android:gravity="center">
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Email"
-        android:textColor="@color/grey_bg_light"
         android:textColorHint="@color/grey_bg_light"
-        android:textSize="30sp"
-        android:layout_marginBottom="20dp"
-        />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Username"
         android:textColor="@color/grey_bg_light"
-        android:textColorHint="@color/grey_bg_light"
         android:textSize="30sp"
+        android:hint="Number of tickets"
         android:layout_marginBottom="20dp"/>
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Avatar"
         android:textColorHint="@color/grey_bg_light"
         android:textColor="@color/grey_bg_light"
         android:textSize="30sp"
+        android:hint="Location"
         android:layout_marginBottom="20dp"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <EditText
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:weightSum="10"
-        android:layout_marginBottom="20dp">
+        android:textColorHint="@color/grey_bg_light"
+        android:textColor="@color/grey_bg_light"
+        android:textSize="30sp"
+        android:hint="Related to album"
+        android:layout_marginBottom="20dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Role:"
-            android:textSize="30sp"
-            android:textColor="@color/grey_bg_light"
-            android:layout_weight="1"/>
-
-        <Spinner
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-
-        </Spinner>
-    </LinearLayout>
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/grey_bg_light"
+        android:textColor="@color/grey_bg_light"
+        android:textSize="30sp"
+        android:hint="Preview"
+        android:layout_marginBottom="20dp"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/RegisterBtn"
-        android:layout_marginTop="40dp"/>
+        android:src="@drawable/AddBtn"/>
 
 </LinearLayout>

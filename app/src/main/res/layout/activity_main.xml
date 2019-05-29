@@ -5,29 +5,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
+    android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity"
-    android:gravity="center">
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Welcome!"
+        android:textColor="@color/grey_bg_light"
+        android:textSize="40sp" />
 
     <EditText
         android:id="@+id/editText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
         android:hint="Username"
-        android:textColorHint="@color/grey_bg_light"
         android:textColor="@color/grey_bg_light"
-        android:textSize="30sp"
-        android:layout_marginBottom="30dp"/>
+        android:textColorHint="@color/grey_bg_light"
+        android:textSize="30sp" />
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
         android:hint="Email"
-        android:textColorHint="@color/grey_bg_light"
         android:textColor="@color/grey_bg_light"
-        android:textSize="30sp"
-        android:layout_marginBottom="30dp"/>
+        android:textColorHint="@color/grey_bg_light"
+        android:textSize="30sp" />
 
     <LinearLayout
         android:layout_width="match_parent"

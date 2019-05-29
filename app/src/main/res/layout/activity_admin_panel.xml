@@ -6,17 +6,17 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
-    tools:context=".AdminPanel"
-    android:weightSum="5">
+    android:weightSum="5"
+    tools:context=".AdminPanel">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="50sp"
-        android:textColor="@color/grey_bg_light"
-        android:text="Admin Panel"
         android:layout_gravity="center_horizontal"
-        android:layout_margin="30dp"/>
+        android:layout_margin="30dp"
+        android:text="Admin Panel"
+        android:textColor="@color/grey_bg_light"
+        android:textSize="50sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,16 +28,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
-            android:src="@drawable/ImportUsersBtn"
-            />
+            android:src="@drawable/ImportUsersBtn" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
-            android:src="@drawable/ExportUsersBtn"
-            />
+            android:src="@drawable/ExportUsersBtn" />
 
     </LinearLayout>
 
@@ -51,16 +49,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
-            android:src="@drawable/ImportElementsBtn"
-            />
+            android:src="@drawable/ImportElementsBtn" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
-            android:src="@drawable/ExportElementsBtn"
-            />
+            android:src="@drawable/ExportElementsBtn" />
 
     </LinearLayout>
 
@@ -74,16 +70,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
-            android:src="@drawable/ImportActionsBtn"
-            />
+            android:src="@drawable/ImportActionsBtn" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
-            android:src="@drawable/ExportActionsBtn"
-            />
+            android:src="@drawable/ExportActionsBtn" />
 
     </LinearLayout>
 </LinearLayout>

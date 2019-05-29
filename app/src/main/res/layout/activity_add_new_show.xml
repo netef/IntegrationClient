@@ -5,49 +5,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
+    android:gravity="center"
     android:orientation="vertical"
-    tools:context=".AddNewShowActivity"
-    android:gravity="center">
+    tools:context=".AddNewShowActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Add New Show"
+        android:textColor="@color/grey_bg_light"
+        android:textSize="40sp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColorHint="@color/grey_bg_light"
-        android:textColor="@color/grey_bg_light"
-        android:textSize="30sp"
+        android:layout_marginBottom="20dp"
         android:hint="Number of tickets"
-        android:layout_marginBottom="20dp"/>
+        android:textColor="@color/grey_bg_light"
+        android:textColorHint="@color/grey_bg_light"
+        android:textSize="30sp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColorHint="@color/grey_bg_light"
-        android:textColor="@color/grey_bg_light"
-        android:textSize="30sp"
+        android:layout_marginBottom="20dp"
         android:hint="Location"
-        android:layout_marginBottom="20dp"/>
+        android:textColor="@color/grey_bg_light"
+        android:textColorHint="@color/grey_bg_light"
+        android:textSize="30sp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColorHint="@color/grey_bg_light"
-        android:textColor="@color/grey_bg_light"
-        android:textSize="30sp"
+        android:layout_marginBottom="20dp"
         android:hint="Related to album"
-        android:layout_marginBottom="20dp"/>
+        android:textColor="@color/grey_bg_light"
+        android:textColorHint="@color/grey_bg_light"
+        android:textSize="30sp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColorHint="@color/grey_bg_light"
-        android:textColor="@color/grey_bg_light"
-        android:textSize="30sp"
+        android:layout_marginBottom="20dp"
         android:hint="Preview"
-        android:layout_marginBottom="20dp"/>
+        android:textColor="@color/grey_bg_light"
+        android:textColorHint="@color/grey_bg_light"
+        android:textSize="30sp" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/AddBtn"/>
+        android:src="@drawable/AddBtn" />
 
 </LinearLayout>

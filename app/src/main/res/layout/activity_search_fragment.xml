@@ -15,8 +15,10 @@
         android:text="Search"
         android:textColor="@color/grey_bg_light"
         android:textSize="40sp"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"/>
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorPrimaryDark"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"

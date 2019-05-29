@@ -4,41 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".UpdateActivity"
     android:background="@color/colorPrimary"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".UpdateActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Register"
+        android:textColor="@color/grey_bg_light"
+        android:textSize="40sp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:hint="Username"
         android:textColorHint="@color/grey_bg_light"
-        android:textSize="30sp"
-        android:layout_marginBottom="20dp"/>
+        android:textSize="30sp" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:hint="avatar"
         android:textColorHint="@color/grey_bg_light"
-        android:textSize="30sp"
-        android:layout_marginBottom="20dp"/>
+        android:textSize="30sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:weightSum="10"
-        android:layout_marginBottom="20dp">
+        android:weightSum="10">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="Role:"
-            android:textSize="30sp"
             android:textColor="@color/grey_bg_light"
-            android:layout_weight="1"/>
+            android:textSize="30sp" />
 
         <Spinner
             android:layout_width="wrap_content"
@@ -51,7 +60,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/UpdateBtn"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginTop="40dp"
+        android:src="@drawable/UpdateBtn" />
 
 </LinearLayout>

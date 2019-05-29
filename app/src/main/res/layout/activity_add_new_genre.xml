@@ -9,6 +9,15 @@
     tools:context=".AddNewGenreActivity"
     android:gravity="center">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add New Genres"
+        android:textColor="@color/grey_bg_light"
+        android:textSize="40sp"
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorPrimaryDark"/>
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

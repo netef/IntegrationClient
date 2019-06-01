@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //change the port accordingly
-        String URL = "http://localhost: + port + /smartspace/";
+        String URL = "jdbc:mysql://localhost:3306/inbala1?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
 

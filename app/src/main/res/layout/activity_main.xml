@@ -47,14 +47,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
-            android:src="@drawable/RegisterBtn" />
+            android:src="@drawable/registerbtn" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
-            android:src="@drawable/LoginBtn" />
+            android:src="@drawable/loginbtn" />
     </LinearLayout>
 
 </LinearLayout>

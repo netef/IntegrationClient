@@ -83,7 +83,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/AddBtn"
+        android:src="@drawable/addbtn"
         android:layout_marginTop="40dp"/>
 
 </LinearLayout>

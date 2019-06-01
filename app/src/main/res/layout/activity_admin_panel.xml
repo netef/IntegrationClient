@@ -28,14 +28,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
-            android:src="@drawable/ImportUsersBtn" />
+            android:src="@drawable/importusersbtn" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
-            android:src="@drawable/ExportUsersBtn" />
+            android:src="@drawable/exportusersbtn" />
 
     </LinearLayout>
 
@@ -49,14 +49,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
-            android:src="@drawable/ImportElementsBtn" />
+            android:src="@drawable/importelementsbtn" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
-            android:src="@drawable/ExportElementsBtn" />
+            android:src="@drawable/exportelementsbtn" />
 
     </LinearLayout>
 
@@ -70,14 +70,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
-            android:src="@drawable/ImportActionsBtn" />
+            android:src="@drawable/importactionsbtn" />
 
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
-            android:src="@drawable/ExportActionsBtn" />
+            android:src="@drawable/exportactionsbtn" />
 
     </LinearLayout>
 </LinearLayout>

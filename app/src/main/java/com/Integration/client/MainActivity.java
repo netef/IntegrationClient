@@ -1,8 +1,13 @@
 package com.Integration.client;
 
+import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -19,12 +24,39 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
+    private EditText userName;
+    private EditText email;
+    private ImageView registerBtn;
+    private ImageView loginBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String URL = "http://10.0.0.34:8080";
+        userName = findViewById(R.id.username);
+        email = findViewById(R.id.email);
+        registerBtn = findViewById(R.id.registerbtn);
+        loginBtn = findViewById(R.id.loginbtn);
+
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                connectToServer();
+            }
+        });
+    }
+
+    void connectToServer(){
+        String URL = "http://172.40.1.139:8087";
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
 

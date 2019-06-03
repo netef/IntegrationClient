@@ -19,6 +19,7 @@
         android:background="@color/colorPrimaryDark"/>
 
     <EditText
+        android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="Genre name"
@@ -28,6 +29,7 @@
         android:layout_marginBottom="20dp"/>
 
     <ImageView
+        android:id="@+id/addbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/addbtn"/>

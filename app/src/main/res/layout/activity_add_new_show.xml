@@ -19,6 +19,7 @@
         android:textSize="40sp" />
 
     <EditText
+        android:id="@+id/numoftickets"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -28,6 +29,7 @@
         android:textSize="30sp" />
 
     <EditText
+        android:id="@+id/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -37,6 +39,7 @@
         android:textSize="30sp" />
 
     <EditText
+        android:id="@+id/relatedtoalbum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -46,6 +49,7 @@
         android:textSize="30sp" />
 
     <EditText
+        android:id="@+id/preview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
@@ -55,6 +59,7 @@
         android:textSize="30sp" />
 
     <ImageView
+        android:id="@+id/addbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/addbtn" />

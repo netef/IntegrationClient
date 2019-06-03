@@ -46,10 +46,10 @@ public class RegisterActivity extends AppCompatActivity {
 
         email = findViewById(R.id.email);
         userName = findViewById(R.id.username);
-        role = findViewById(R.id.role);
         avatar = findViewById(R.id.avatar);
         registerBtn = findViewById(R.id.registerbtn);
 
+        role = findViewById(R.id.role);
         role.setAdapter(adapter);
 
 
@@ -85,6 +85,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         Toast.makeText(RegisterActivity.this, response.toString(), Toast.LENGTH_SHORT).show();
+                        finish();
                     }
                 },
                 new Response.ErrorListener() {

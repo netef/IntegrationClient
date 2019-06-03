@@ -44,14 +44,38 @@ public class AddNewGenreActivity extends AppCompatActivity {
 
     void addNewGenre() {
 
+
+        Map<String, Object> creator = new HashMap<>();
+        Map<String, Object> latlng = new HashMap<>();
+        Map<String, Object> elementProperties = new HashMap<>();
+
+        creator.put("email", getSharedPreferences(getPackageName(),
+                MODE_PRIVATE).getString("email", ""));
+        creator.put("smartspace", getSharedPreferences(getPackageName(),
+                MODE_PRIVATE).getString("smartspace", ""));
+
+        //just for testing
+        latlng.put("lat", 1);
+        latlng.put("lng", 1);
+
+        elementProperties.put("genrename", name.getText().toString());
+
+
         JSONObject request = new JSONObject();
         try {
-            request.put("email", name.getText().toString());
+            request.put("elementType", "genre");
+
+            //need to fix name
+            request.put("name", "Show");
+
+            request.put("creator", creator);
+            request.put("latlng", latlng);
+            request.put("elementProperties", elementProperties);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        String URL = "http://" + getString(R.string.ip) + ":8087/smartspace/users";
+        String URL = "http://" + getString(R.string.ip) + ":8087/smartspace/elements";
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
 

@@ -49,17 +49,41 @@ public class AddNewShowActivity extends AppCompatActivity {
 
     void addNewShow() {
 
+
+        Map<String, Object> creator = new HashMap<>();
+        Map<String, Object> latlng = new HashMap<>();
+        Map<String, Object> elementProperties = new HashMap<>();
+
+
+        creator.put("email", getSharedPreferences(getPackageName(),
+                MODE_PRIVATE).getString("email", ""));
+        creator.put("smartspace", getSharedPreferences(getPackageName(),
+                MODE_PRIVATE).getString("smartspace", ""));
+
+        //just for testing
+        latlng.put("lat", 1);
+        latlng.put("lng", 1);
+
+        elementProperties.put("numberOfTickets", numberOfTickets.getText().toString());
+        elementProperties.put("location", location.getText().toString());
+        elementProperties.put("relatedToAlbum", relatedToAlbum.getText().toString());
+
         JSONObject request = new JSONObject();
         try {
-            request.put("numberoftickets", numberOfTickets.getText().toString());
-            request.put("location", location.getText().toString());
-            request.put("relatedtoalbum", relatedToAlbum.getText().toString());
+            request.put("elementType", "Show");
+
+            //need to fix name
+            request.put("name", "Show");
+
+            request.put("creator", creator);
+            request.put("latlng", latlng);
+            request.put("elementProperties", elementProperties);
             request.put("preview", preview.getText().toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        String URL = "http://" + getString(R.string.ip) + ":8087/smartspace/users";
+        String URL = "http://" + getString(R.string.ip) + ":8087/smartspace/elements";
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
 

@@ -32,7 +32,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:padding="10dp"
-            android:text="Update Details" />
+            android:text="Update" />
+
+        <Button
+            android:id="@+id/searchbtn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="Search" />
 
     </LinearLayout>
 

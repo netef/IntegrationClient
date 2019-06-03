@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.Integration.client.AddNewAlbumActivity;
 import com.Integration.client.AddNewGenreActivity;
 import com.Integration.client.R;
+import com.Integration.client.SearchFragment;
 import com.Integration.client.UpdateActivity;
 
 public class AlbumsFragment extends Fragment {
@@ -20,6 +21,7 @@ public class AlbumsFragment extends Fragment {
     private Button addAlbumBtn;
     private Button addGenreBtn;
     private Button updateAlbumBtn;
+    private Button search;
 
     @Nullable
     @Override
@@ -28,6 +30,7 @@ public class AlbumsFragment extends Fragment {
         addAlbumBtn = view.findViewById(R.id.addalbumbtn);
         addGenreBtn = view.findViewById(R.id.addgenrebtn);
         updateAlbumBtn = view.findViewById(R.id.updatedetailsbtn);
+        search = view.findViewById(R.id.searchbtn);
 
         addAlbumBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +50,13 @@ public class AlbumsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), UpdateActivity.class);
+                startActivity(intent);
+            }
+        });
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SearchFragment.class);
                 startActivity(intent);
             }
         });

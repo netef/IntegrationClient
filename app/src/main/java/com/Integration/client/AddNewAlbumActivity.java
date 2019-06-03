@@ -1,6 +1,7 @@
 package com.Integration.client;
 
 import android.app.DatePickerDialog;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -37,6 +38,23 @@ public class AddNewAlbumActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_album);
 
+
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        final DatePickerDialog datePickerDialog = new DatePickerDialog(AddNewAlbumActivity.this,
+                android.R.style.Theme_Material_Dialog,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        releaseDate.setText(String.format("%d/%d/%d", dayOfMonth, month + 1, year));
+                    }
+                },
+                year,
+                month,
+                day);
+
         name = findViewById(R.id.name);
         band = findViewById(R.id.band);
         releaseDate = findViewById(R.id.releasedate);
@@ -46,18 +64,7 @@ public class AddNewAlbumActivity extends AppCompatActivity {
         releaseDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                final Calendar c = Calendar.getInstance();
-                int year = c.get(Calendar.YEAR);
-                int month = c.get(Calendar.MONTH);
-                int day = c.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog date = new DatePickerDialog(getApplicationContext(),
-                        new DatePickerDialog.OnDateSetListener() {
-                            @Override
-                            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-
-                            }
-                        }, year, month, day);
+                datePickerDialog.show();
             }
         });
 
@@ -71,21 +78,37 @@ public class AddNewAlbumActivity extends AppCompatActivity {
 
     void addNewAlbum() {
 
-
+        Map<String, Object> creator = new HashMap<>();
+        Map<String, Object> latlng = new HashMap<>();
         Map<String, Object> elementProperties = new HashMap<>();
+
+
+        creator.put("email", getSharedPreferences(getPackageName(),
+                MODE_PRIVATE).getString("email", ""));
+        creator.put("smartspace", getSharedPreferences(getPackageName(),
+                MODE_PRIVATE).getString("smartspace", ""));
+
+        //just for testing
+        latlng.put("lat", 1);
+        latlng.put("lng", 1);
+
         elementProperties.put("band", band.getText().toString());
+
+
 
         JSONObject request = new JSONObject();
         try {
-            request.put("elementType" , "Album");
+            request.put("elementType", "Album");
             request.put("name", name.getText().toString());
-            request.put("releasedate", releaseDate.getText().toString());
+            request.put("created", releaseDate.getText().toString());
+            request.put("creator", creator);
+            request.put("latlng", latlng);
             request.put("elementProperties", elementProperties);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        String URL = "http://172.40.1.139:8087/smartspace/users";
+        String URL = "http://" + getString(R.string.ip) + ":8087/smartspace/elements";
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
 

@@ -51,7 +51,7 @@ public class AddNewGenreActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        String URL = "http://172.40.1.139:8087/smartspace/users";
+        String URL = "http://" + getString(R.string.ip) + ":8087/smartspace/users";
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
 
@@ -62,6 +62,7 @@ public class AddNewGenreActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+
                         Toast.makeText(getApplicationContext(), response.toString(), Toast.LENGTH_SHORT).show();
                     }
                 },

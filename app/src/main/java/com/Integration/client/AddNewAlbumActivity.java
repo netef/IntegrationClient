@@ -71,12 +71,16 @@ public class AddNewAlbumActivity extends AppCompatActivity {
 
     void addNewAlbum() {
 
+
+        Map<String, Object> elementProperties = new HashMap<>();
+        elementProperties.put("band", band.getText().toString());
+
         JSONObject request = new JSONObject();
         try {
+            request.put("elementType" , "Album");
             request.put("name", name.getText().toString());
-            request.put("band", band.getText().toString());
             request.put("releasedate", releaseDate.getText().toString());
-
+            request.put("elementProperties", elementProperties);
         } catch (Exception e) {
             e.printStackTrace();
         }

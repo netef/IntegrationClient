@@ -24,6 +24,7 @@
         android:layout_weight="1">
 
         <ImageView
+            android:id="@+id/importusersbtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -31,6 +32,7 @@
             android:src="@drawable/importusersbtn" />
 
         <ImageView
+            android:id="@+id/exportusersbtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -45,6 +47,7 @@
         android:layout_weight="1">
 
         <ImageView
+            android:id="@+id/importelementsbtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -52,6 +55,7 @@
             android:src="@drawable/importelementsbtn" />
 
         <ImageView
+            android:id="@+id/exportelementsbtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -66,6 +70,7 @@
         android:layout_weight="1">
 
         <ImageView
+            android:id="@+id/importactionsbtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -73,6 +78,7 @@
             android:src="@drawable/importactionsbtn" />
 
         <ImageView
+            android:id="@+id/exportactionsbtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

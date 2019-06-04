@@ -27,13 +27,11 @@ import java.util.Map;
 
 public class AlbumUpdateActivity extends AppCompatActivity {
 
-    //הגדרות יבשות של דברים
     private EditText name;
     private EditText band;
     private Button releaseDate;
     private ImageView updateBtn;
 
-    //שנייה מסביר לך מה זה
     private Bundle bundle;
 
     @Override
@@ -41,14 +39,13 @@ public class AlbumUpdateActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_album_update);
 
-//:)
+
         bundle = getIntent().getExtras();
         name = findViewById(R.id.name);
         band = findViewById(R.id.band);
         releaseDate = findViewById(R.id.releasedate);
         updateBtn = findViewById(R.id.updatebtn);
 
-        //כל זה בשביל לוח שנה, זה רק באלבומים אל תתייחס לזה
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
         int month = c.get(Calendar.MONTH);
@@ -82,7 +79,6 @@ public class AlbumUpdateActivity extends AppCompatActivity {
 
     void updateAlbum() {
 
-        //זה הKEY שיהיה בהתחלה של הJSON
         JSONObject key = new JSONObject();
         try {
             key.put("smartspace", getSharedPreferences(getPackageName(),
@@ -94,7 +90,6 @@ public class AlbumUpdateActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        //זה כל התכונות של האלבום, שם, להקה...
         JSONObject elementProperties = new JSONObject();
 
         try {
@@ -106,7 +101,6 @@ public class AlbumUpdateActivity extends AppCompatActivity {
 
         String email = getSharedPreferences(getPackageName(), MODE_PRIVATE).getString("email", "");
 
-        //פה כל שאר הדברים כמו הKEY ואיזה סוג של מה זה
         JSONObject request = new JSONObject();
         try {
             request.put("key",key);
@@ -118,7 +112,6 @@ public class AlbumUpdateActivity extends AppCompatActivity {
         }
 
 
-
         String URL = "http://" + getString(R.string.ip) + ":8087/smartspace/elements/"
                 + getSharedPreferences(getPackageName(),
                 MODE_PRIVATE).getString("smartspace", "") + "/" +
@@ -126,7 +119,6 @@ public class AlbumUpdateActivity extends AppCompatActivity {
                 getSharedPreferences(getPackageName(),
                         MODE_PRIVATE).getString("smartspace", "") +
                 bundle.getString("id");
-
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
 

@@ -1,6 +1,7 @@
 package com.Integration.client.Fragments;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,7 +16,25 @@ import com.Integration.client.AddNewGenreActivity;
 import com.Integration.client.AlbumUpdateActivity;
 import com.Integration.client.R;
 import com.Integration.client.SearchFragment;
+import com.Integration.client.TabsActivity;
 import com.Integration.client.UpdateActivity;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import com.google.gson.JsonObject;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class AlbumsFragment extends Fragment {
 
@@ -34,6 +53,8 @@ public class AlbumsFragment extends Fragment {
         updateUserBtn = view.findViewById(R.id.updatedetailsbtn);
         updateAlbumBtn = view.findViewById(R.id.updatealbumbtn);
         search = view.findViewById(R.id.searchbtn);
+
+        loadAlbumsFromServers();
 
         addAlbumBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,5 +93,51 @@ public class AlbumsFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private void loadAlbumsFromServers() {
+
+        String URL = "http://" + getString(R.string.ip) + ":8087/smartspace/elements/"
+                + this.getActivity().getSharedPreferences(this.getActivity().getPackageName(),
+                MODE_PRIVATE).getString("smartspace", "") + "/"
+                + this.getActivity().getSharedPreferences(this.getActivity().getPackageName(),
+                MODE_PRIVATE).getString("email", "") +
+                "?search=Album&value=Album$page=0&size=0";
+
+        final RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+                Request.Method.GET,
+                URL,
+                null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            ArrayList<JSONObject> albums = new ArrayList<>();
+                            albums.add(response);
+                            for(JSONObject album : response)
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }){
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("Accept", "application/json");
+                params.put("Content-Type", "application/json");
+                return params;
+            }
+        };
+        requestQueue.add(jsonObjectRequest);
+
     }
 }

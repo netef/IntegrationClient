@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class UpdateActivity extends AppCompatActivity {
+public class AlbumUpdateActivity extends AppCompatActivity {
 
     private EditText userName;
     private EditText avatar;
@@ -54,13 +54,13 @@ public class UpdateActivity extends AppCompatActivity {
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateUser();
+                updateAlbum();
             }
         });
 
     }
 
-    void updateUser() {
+    void updateAlbum() {
 
         JSONObject key = new JSONObject();
 
@@ -100,13 +100,13 @@ public class UpdateActivity extends AppCompatActivity {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Toast.makeText(UpdateActivity.this, response.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AlbumUpdateActivity.this, response.toString(), Toast.LENGTH_SHORT).show();
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(UpdateActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AlbumUpdateActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
                     }
                 }) {
 

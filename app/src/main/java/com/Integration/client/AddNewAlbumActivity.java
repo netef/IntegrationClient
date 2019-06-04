@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.Integration.client.Boundaries.Creator;
+import com.Integration.client.Boundaries.Latlng;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -78,22 +80,15 @@ public class AddNewAlbumActivity extends AppCompatActivity {
 
     void addNewAlbum() {
 
-        Map<String, Object> creator = new HashMap<>();
-        Map<String, Object> latlng = new HashMap<>();
+        Creator creator = new Creator(getSharedPreferences(getPackageName(),
+                MODE_PRIVATE).getString("email", ""),
+                getSharedPreferences(getPackageName(),
+                        MODE_PRIVATE).getString("smartspace", ""));
+
+        Latlng latlng = new Latlng(1, 1);
+
         Map<String, Object> elementProperties = new HashMap<>();
-
-
-        creator.put("email", getSharedPreferences(getPackageName(),
-                MODE_PRIVATE).getString("email", ""));
-        creator.put("smartspace", getSharedPreferences(getPackageName(),
-                MODE_PRIVATE).getString("smartspace", ""));
-
-        //just for testing
-        latlng.put("lat", 1);
-        latlng.put("lng", 1);
-
         elementProperties.put("band", band.getText().toString());
-
 
 
         JSONObject request = new JSONObject();

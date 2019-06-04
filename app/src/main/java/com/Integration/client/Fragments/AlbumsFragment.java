@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.Integration.client.AddNewAlbumActivity;
 import com.Integration.client.AddNewGenreActivity;
+import com.Integration.client.AlbumUpdateActivity;
 import com.Integration.client.R;
 import com.Integration.client.SearchFragment;
 import com.Integration.client.UpdateActivity;
@@ -20,6 +21,7 @@ public class AlbumsFragment extends Fragment {
 
     private Button addAlbumBtn;
     private Button addGenreBtn;
+    private Button updateUserBtn;
     private Button updateAlbumBtn;
     private Button search;
 
@@ -29,7 +31,8 @@ public class AlbumsFragment extends Fragment {
         View view = inflater.inflate(R.layout.albums_slide, container, false);
         addAlbumBtn = view.findViewById(R.id.addalbumbtn);
         addGenreBtn = view.findViewById(R.id.addgenrebtn);
-        updateAlbumBtn = view.findViewById(R.id.updatedetailsbtn);
+        updateUserBtn = view.findViewById(R.id.updatedetailsbtn);
+        updateAlbumBtn = view.findViewById(R.id.updatealbumbtn);
         search = view.findViewById(R.id.searchbtn);
 
         addAlbumBtn.setOnClickListener(new View.OnClickListener() {
@@ -46,10 +49,17 @@ public class AlbumsFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        updateAlbumBtn.setOnClickListener(new View.OnClickListener() {
+        updateUserBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), UpdateActivity.class);
+                startActivity(intent);
+            }
+        });
+        updateAlbumBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), AlbumUpdateActivity.class);
                 startActivity(intent);
             }
         });

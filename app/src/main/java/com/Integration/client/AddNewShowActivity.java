@@ -7,6 +7,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.Integration.client.Boundaries.Creator;
+import com.Integration.client.Boundaries.Latlng;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -49,21 +51,15 @@ public class AddNewShowActivity extends AppCompatActivity {
 
     void addNewShow() {
 
+        Creator creator = new Creator(getSharedPreferences(getPackageName(),
+                MODE_PRIVATE).getString("email", ""),
+                getSharedPreferences(getPackageName(),
+                        MODE_PRIVATE).getString("smartspace", ""));
 
-        Map<String, Object> creator = new HashMap<>();
-        Map<String, Object> latlng = new HashMap<>();
+        Latlng latlng = new Latlng(1, 1);
+
+
         Map<String, Object> elementProperties = new HashMap<>();
-
-
-        creator.put("email", getSharedPreferences(getPackageName(),
-                MODE_PRIVATE).getString("email", ""));
-        creator.put("smartspace", getSharedPreferences(getPackageName(),
-                MODE_PRIVATE).getString("smartspace", ""));
-
-        //just for testing
-        latlng.put("lat", 1);
-        latlng.put("lng", 1);
-
         elementProperties.put("numberOfTickets", numberOfTickets.getText().toString());
         elementProperties.put("location", location.getText().toString());
         elementProperties.put("relatedToAlbum", relatedToAlbum.getText().toString());
@@ -74,7 +70,7 @@ public class AddNewShowActivity extends AppCompatActivity {
 
             //need to fix name
             request.put("name", "Show");
-
+            request.put("expired", false);
             request.put("creator", creator);
             request.put("latlng", latlng);
             request.put("elementProperties", elementProperties);
@@ -83,7 +79,8 @@ public class AddNewShowActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        String URL = "http://" + getString(R.string.ip) + ":8087/smartspace/elements";
+        String URL = "http://" + getString(R.string.ip) + ":8087/smartspace/elements/"
+                + creator.getSmartspace() + "/" + creator.getEmail();
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
 

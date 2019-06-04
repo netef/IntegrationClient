@@ -1,12 +1,13 @@
 package com.Integration.client;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -20,37 +21,56 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class AlbumUpdateActivity extends AppCompatActivity {
 
-    private EditText userName;
-    private EditText avatar;
-    private Spinner role;
+    //הגדרות יבשות של דברים
+    private EditText name;
+    private EditText band;
+    private Button releaseDate;
     private ImageView updateBtn;
+
+    //שנייה מסביר לך מה זה
+    private Bundle bundle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update);
+        setContentView(R.layout.activity_album_update);
 
-        ArrayList<String> roles = new ArrayList<>();
-        roles.add("PLAYER");
-        roles.add("MANAGER");
-        roles.add("ADMIN");
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(UpdateActivity.this, android.R.layout.simple_spinner_dropdown_item, roles);
-
-
-        userName = findViewById(R.id.username);
-        avatar = findViewById(R.id.avatar);
+//:)
+        bundle = getIntent().getExtras();
+        name = findViewById(R.id.name);
+        band = findViewById(R.id.band);
+        releaseDate = findViewById(R.id.releasedate);
         updateBtn = findViewById(R.id.updatebtn);
 
-        role = findViewById(R.id.role);
-        role.setAdapter(adapter);
+        //כל זה בשביל לוח שנה, זה רק באלבומים אל תתייחס לזה
+        final Calendar c = Calendar.getInstance();
+        int year = c.get(Calendar.YEAR);
+        int month = c.get(Calendar.MONTH);
+        int day = c.get(Calendar.DAY_OF_MONTH);
+        final DatePickerDialog datePickerDialog = new DatePickerDialog(AlbumUpdateActivity.this,
+                android.R.style.Theme_Material_Dialog,
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        releaseDate.setText(String.format("%d/%d/%d", dayOfMonth, month + 1, year));
+                    }
+                },
+                year,
+                month,
+                day);
 
+        releaseDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                datePickerDialog.show();
+            }
+        });
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,8 +82,8 @@ public class AlbumUpdateActivity extends AppCompatActivity {
 
     void updateAlbum() {
 
+        //זה הKEY שיהיה בהתחלה של הJSON
         JSONObject key = new JSONObject();
-
         try {
             key.put("smartspace", getSharedPreferences(getPackageName(),
                     MODE_PRIVATE).getString("smartspace", ""));
@@ -74,22 +94,39 @@ public class AlbumUpdateActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        //זה כל התכונות של האלבום, שם, להקה...
+        JSONObject elementProperties = new JSONObject();
+
+        try {
+            elementProperties.put("band", band.getText().toString());
+            elementProperties.put("releasedate", releaseDate.getText().toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         String email = getSharedPreferences(getPackageName(), MODE_PRIVATE).getString("email", "");
+
+        //פה כל שאר הדברים כמו הKEY ואיזה סוג של מה זה
         JSONObject request = new JSONObject();
         try {
             request.put("key",key);
-            request.put("role", role.getSelectedItem().toString());
-            request.put("username", userName.getText().toString());
-            request.put("avatar", avatar.getText().toString());
+            request.put("elementType", "Album");
+            request.put("name", name.getText().toString());
+            request.put("elementProperties", elementProperties);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        String URL = "http://" + getString(R.string.ip) + ":8087/smartspace/users/login/"
+
+
+        String URL = "http://" + getString(R.string.ip) + ":8087/smartspace/elements/"
                 + getSharedPreferences(getPackageName(),
                 MODE_PRIVATE).getString("smartspace", "") + "/" +
-                email;
+                email +
+                getSharedPreferences(getPackageName(),
+                        MODE_PRIVATE).getString("smartspace", "") +
+                bundle.getString("id");
+
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
 

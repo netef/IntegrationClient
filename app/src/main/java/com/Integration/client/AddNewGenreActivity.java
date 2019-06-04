@@ -88,7 +88,6 @@ public class AddNewGenreActivity extends AppCompatActivity {
         }
         JSONObject elementProperties = new JSONObject();
 
-
             JSONObject request = new JSONObject();
             try {
                 request.put("key", key);
@@ -103,8 +102,6 @@ public class AddNewGenreActivity extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
 
             String URL = "http://" + getString(R.string.ip) + ":8087/smartspace/elements/"
                     + getSharedPreferences(getPackageName(),

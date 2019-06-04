@@ -1,9 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".AlbumUpdateActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:background="@color/colorPrimaryDark"
+        android:text="Update Album"
+        android:textColor="@color/grey_bg_light"
+        android:textSize="40sp" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:hint="Album Name"
+        android:textColorHint="@color/grey_bg_light"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/band"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:hint="Band"
+        android:textColorHint="@color/grey_bg_light"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/releasedate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Release Date"
+        android:textColorHint="@color/grey_bg_light"
+        android:textColor="@color/grey_bg_light"
+        android:textSize="30sp"
+        android:layout_marginBottom="20dp"
+        style="@style/Base.Widget.AppCompat.Button.Colored"/>
+
+    <ImageView
+        android:id="@+id/updatebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/updatebtn" />
+
+</LinearLayout>

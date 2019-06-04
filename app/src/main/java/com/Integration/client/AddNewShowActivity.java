@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.Integration.client.Boundaries.Creator;
+import com.Integration.client.Boundaries.ElementKey;
 import com.Integration.client.Boundaries.Latlng;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -16,7 +17,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.gson.Gson;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -24,6 +27,7 @@ import java.util.Map;
 
 public class AddNewShowActivity extends AppCompatActivity {
 
+    private EditText name;
     private EditText numberOfTickets;
     private EditText location;
     private EditText relatedToAlbum;
@@ -35,6 +39,7 @@ public class AddNewShowActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_show);
 
+        name = findViewById(R.id.name);
         numberOfTickets = findViewById(R.id.numoftickets);
         location = findViewById(R.id.location);
         relatedToAlbum = findViewById(R.id.relatedtoalbum);
@@ -51,36 +56,72 @@ public class AddNewShowActivity extends AppCompatActivity {
 
     void addNewShow() {
 
-        Creator creator = new Creator(getSharedPreferences(getPackageName(),
+        ElementKey elementKey=new ElementKey("inbala1");
+        Creator creatortemp=new Creator(getSharedPreferences(getPackageName(),
                 MODE_PRIVATE).getString("email", ""),
                 getSharedPreferences(getPackageName(),
                         MODE_PRIVATE).getString("smartspace", ""));
 
-        Latlng latlng = new Latlng(1, 1);
+        JSONObject key = new JSONObject();
 
+        try {
+            key.put("id", elementKey.getId());
+            key.put("smartspace", elementKey.getSmartspace());
 
-        Map<String, Object> elementProperties = new HashMap<>();
-        elementProperties.put("numberOfTickets", numberOfTickets.getText().toString());
-        elementProperties.put("location", location.getText().toString());
-        elementProperties.put("relatedToAlbum", relatedToAlbum.getText().toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JSONObject creator = new JSONObject();
+
+        try {
+            key.put("email", creatortemp.getEmail());
+            key.put("smartspace", creatortemp.getSmartspace());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        Latlng latlangtemp  = new Latlng(1.0,1.0);
+        Gson gson = new Gson();
+        gson.toJson(latlangtemp);
+
+        JSONObject latlng = new JSONObject();
+
+        try {
+            key.put("lat",latlangtemp.getLat());
+            key.put("lng", latlangtemp.getLng());
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        JSONObject elementProperties = new JSONObject();
+
+        try {
+            elementProperties.put("numberoftickets", numberOfTickets.getText().toString());
+            elementProperties.put("relatedtoalbum", relatedToAlbum.getText().toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
         JSONObject request = new JSONObject();
         try {
+            request.put("key", key);
             request.put("elementType", "Show");
 
             //need to fix name
-            request.put("name", "Show");
+            request.put("name", name.getText().toString());
             request.put("expired", false);
             request.put("creator", creator);
             request.put("latlng", latlng);
             request.put("elementProperties", elementProperties);
-            request.put("preview", preview.getText().toString());
+            //request.put("preview", preview.getText().toString());
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         String URL = "http://" + getString(R.string.ip) + ":8087/smartspace/elements/"
-                + creator.getSmartspace() + "/" + creator.getEmail();
+                + getSharedPreferences(getPackageName(),
+                MODE_PRIVATE).getString("smartspace", "") + "/" + getSharedPreferences(getPackageName(),
+                MODE_PRIVATE).getString("email", "");
 
         final RequestQueue requestQueue = Volley.newRequestQueue(this);
 

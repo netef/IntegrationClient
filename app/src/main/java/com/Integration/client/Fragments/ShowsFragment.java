@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.Integration.client.AddNewShowActivity;
 import com.Integration.client.R;
 import com.Integration.client.SearchFragment;
+import com.Integration.client.UpdateActivity;
 import com.Integration.client.UpdateShowActivity;
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -51,6 +52,7 @@ public class ShowsFragment extends Fragment {
         listView = view.findViewById(R.id.listview);
         Button addShowBtn = view.findViewById(R.id.addshowbtn);
         Button search = view.findViewById(R.id.searchbtn);
+        Button updateUser = view.findViewById(R.id.updatedetailsbtn);
 
         loadShowsFromServer();
 
@@ -66,6 +68,14 @@ public class ShowsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), SearchFragment.class);
+                startActivity(intent);
+            }
+        });
+
+        updateUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), UpdateActivity.class);
                 startActivity(intent);
             }
         });

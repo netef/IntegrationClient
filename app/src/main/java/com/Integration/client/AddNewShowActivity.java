@@ -32,7 +32,6 @@ public class AddNewShowActivity extends AppCompatActivity {
     private EditText location;
     private EditText relatedToAlbum;
     private EditText preview;
-    private ImageView addBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +43,7 @@ public class AddNewShowActivity extends AppCompatActivity {
         location = findViewById(R.id.location);
         relatedToAlbum = findViewById(R.id.relatedtoalbum);
         preview = findViewById(R.id.preview);
-        addBtn = findViewById(R.id.addbtn);
+        ImageView addBtn = findViewById(R.id.addbtn);
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -27,10 +27,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText userName;
     private EditText email;
-    private ImageView registerBtn;
-    private ImageView loginBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         email = findViewById(R.id.email);
-        userName = findViewById(R.id.username);
-        registerBtn = findViewById(R.id.registerbtn);
-        loginBtn = findViewById(R.id.loginbtn);
+        EditText userName = findViewById(R.id.username);
+        ImageView registerBtn = findViewById(R.id.registerbtn);
+        ImageView loginBtn = findViewById(R.id.loginbtn);
 
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override

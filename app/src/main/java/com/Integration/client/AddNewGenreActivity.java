@@ -28,7 +28,6 @@ import java.util.Map;
 public class AddNewGenreActivity extends AppCompatActivity {
 
     private EditText name;
-    private ImageView addBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +35,7 @@ public class AddNewGenreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_new_genre);
 
         name = findViewById(R.id.name);
-        addBtn = findViewById(R.id.addbtn);
+        ImageView addBtn = findViewById(R.id.addbtn);
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override

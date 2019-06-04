@@ -30,7 +30,6 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText userName;
     private EditText avatar;
     private Spinner role;
-    private ImageView registerBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
         email = findViewById(R.id.email);
         userName = findViewById(R.id.username);
         avatar = findViewById(R.id.avatar);
-        registerBtn = findViewById(R.id.registerbtn);
+        ImageView registerBtn = findViewById(R.id.registerbtn);
 
         role = findViewById(R.id.role);
         role.setAdapter(adapter);

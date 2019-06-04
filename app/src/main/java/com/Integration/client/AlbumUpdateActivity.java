@@ -3,6 +3,7 @@ package com.Integration.client;
 import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -30,7 +31,6 @@ public class AlbumUpdateActivity extends AppCompatActivity {
     private EditText name;
     private EditText band;
     private Button releaseDate;
-    private ImageView updateBtn;
 
     private Bundle bundle;
 
@@ -44,7 +44,7 @@ public class AlbumUpdateActivity extends AppCompatActivity {
         name = findViewById(R.id.name);
         band = findViewById(R.id.band);
         releaseDate = findViewById(R.id.releasedate);
-        updateBtn = findViewById(R.id.updatebtn);
+        ImageView updateBtn = findViewById(R.id.updatebtn);
 
         final Calendar c = Calendar.getInstance();
         int year = c.get(Calendar.YEAR);
@@ -75,6 +75,7 @@ public class AlbumUpdateActivity extends AppCompatActivity {
             }
         });
 
+        Log.e("id", bundle.getString("id"));
     }
 
     void updateAlbum() {

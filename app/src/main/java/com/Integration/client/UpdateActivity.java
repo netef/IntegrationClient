@@ -29,7 +29,6 @@ public class UpdateActivity extends AppCompatActivity {
     private EditText userName;
     private EditText avatar;
     private Spinner role;
-    private ImageView updateBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,7 @@ public class UpdateActivity extends AppCompatActivity {
 
         userName = findViewById(R.id.username);
         avatar = findViewById(R.id.avatar);
-        updateBtn = findViewById(R.id.updatebtn);
+        ImageView updateBtn = findViewById(R.id.updatebtn);
 
         role = findViewById(R.id.role);
         role.setAdapter(adapter);

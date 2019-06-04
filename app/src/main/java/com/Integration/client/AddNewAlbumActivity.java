@@ -37,7 +37,6 @@ public class AddNewAlbumActivity extends AppCompatActivity {
     private EditText band;
     private Button releaseDate;
     private EditText preview;
-    private ImageView addBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +64,7 @@ public class AddNewAlbumActivity extends AppCompatActivity {
         band = findViewById(R.id.band);
         releaseDate = findViewById(R.id.releasedate);
         preview = findViewById(R.id.preview);
-        addBtn = findViewById(R.id.addbtn);
+        ImageView addBtn = findViewById(R.id.addbtn);
 
         releaseDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,7 +133,7 @@ public class AddNewAlbumActivity extends AppCompatActivity {
         JSONObject request = new JSONObject();
         try {
             request.put("key", key);
-
+            request.put("name", name.getText().toString());
             request.put("elementType", "Album");
             request.put("creator", creator);
             request.put("latlng", latlng);

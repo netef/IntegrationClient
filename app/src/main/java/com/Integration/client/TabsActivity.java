@@ -14,8 +14,6 @@ public class TabsActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
-    private ViewPager mViewPager;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +21,7 @@ public class TabsActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: Starting.");
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = findViewById(R.id.container);
+        ViewPager mViewPager = findViewById(R.id.container);
         setupViewPager(mViewPager);
 
         TabLayout tabLayout = findViewById(R.id.tabs);
